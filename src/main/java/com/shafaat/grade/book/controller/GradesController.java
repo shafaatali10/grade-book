@@ -1,17 +1,29 @@
 package com.shafaat.grade.book.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.shafaat.grade.book.dto.AssessmentsDTO;
+import com.shafaat.grade.book.service.GradeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("grades")
+import java.util.ArrayList;
+import java.util.HashMap;
+
+@RestController
+@RequestMapping("grades")
 public class GradesController {
+
+    @Autowired
+    private GradeService gradeService;
 
     @GetMapping("/{studentId}")
     public String getGradeForStudent(@PathVariable("studentId") Integer studentId){
-        return "Grade for Student " + studentId +" is:: 89%";
+        return gradeService.getGradeForStudent(studentId);
+    }
+
+    @GetMapping("/calculate")
+    public Double calculateGrade(@RequestBody ArrayList<AssessmentsDTO> assessments) throws Exception {
+        return gradeService.calculateGrade(assessments, new HashMap<>());
     }
 
 }

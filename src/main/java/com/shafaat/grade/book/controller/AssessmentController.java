@@ -3,7 +3,7 @@ package com.shafaat.grade.book.controller;
 
 import com.shafaat.grade.book.common.AssessmentTypesEnum;
 import com.shafaat.grade.book.dto.AssessmentsDTO;
-import com.shafaat.grade.book.service.AssessmentServcice;
+import com.shafaat.grade.book.service.AssessmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,15 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@RestController("assessments")
+@RestController
+@RequestMapping("assessments")
 public class AssessmentController {
 
     @Autowired
-    private AssessmentServcice assessmentServcice;
+    private AssessmentService assessmentService;
 
-    @PostMapping
-    public AssessmentsDTO addAssessment(@RequestBody AssessmentsDTO assessmentsDTO) throws Exception {
-        return assessmentServcice.addAssessment(assessmentsDTO);
+    @PostMapping("{studentId}")
+    public AssessmentsDTO addAssessment(@PathVariable("studentId") Integer studentId,
+                                        @RequestBody AssessmentsDTO assessmentsDTO) throws Exception {
+        return assessmentService.addAssessment(studentId, assessmentsDTO);
     }
 
     @DeleteMapping("/{assessmentId}")

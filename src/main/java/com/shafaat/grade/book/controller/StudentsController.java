@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@RestController("students")
+@RestController
+@RequestMapping("students")
 public class StudentsController {
     @Autowired
     private StudentsService studentsService;
