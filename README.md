@@ -1,7 +1,5 @@
 # Grade Book System
 
-The development is not complete yet.
-
 ### 1. API Definitions
 
 Example: Allocations
