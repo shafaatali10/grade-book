@@ -1,11 +1,13 @@
-package com.shafaat.grade.book.entity;
+package com.shafaat.grade.book.dto;
+
+import com.shafaat.grade.book.entity.AbstractAssessmentType;
 
 import java.util.List;
 
-public class Students {
+public class StudentsDTO {
     private Integer studentId;
     private String studentName;
-    private List<AbstractAssessmentType> assessments;
+    private List<AssessmentsDTO> assessments;
 
     public Integer getStudentId() {
         return studentId;
@@ -23,11 +25,11 @@ public class Students {
         this.studentName = studentName;
     }
 
-    public List<AbstractAssessmentType> getAssessments() {
+    public List<AssessmentsDTO> getAssessments() {
         return assessments;
     }
 
-    public void setAssessments(List<AbstractAssessmentType> assessments) {
+    public void setAssessments(List<AssessmentsDTO> assessments) {
         this.assessments = assessments;
     }
 }
